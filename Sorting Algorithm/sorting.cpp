@@ -44,6 +44,25 @@ void bubbleSort(vector<int>&arr){
     cout<<endl;
 }
 
+void insertionSort(vector<int>&arr){
+    int n = arr.size();
+    for(int i = 0; i < n; i++){
+        for(int j = i; j > 0; j--){
+            if(arr[j] < arr[j-1]){
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+            }else{
+                break;
+            }
+        }
+    }
+
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
 int main(){
     cout<<"The sorted Elements are :- "<<endl;
     vector<int>arr = {64, 25, 12, 22, 11, 10, 9, 23, 32};
@@ -51,5 +70,7 @@ int main(){
     Selectionsort(arr);
     cout<<"Bubble Sort Algorithm :- ";
     bubbleSort(arr);
+    cout<<"Insertion Sort Algorithm :- ";
+    insertionSort(arr);
     return 0;
 }
