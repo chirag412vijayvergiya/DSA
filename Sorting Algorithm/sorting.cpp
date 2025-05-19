@@ -61,16 +61,67 @@ void insertionSort(vector<int>&arr){
     for(int i = 0; i < n; i++){
         cout<<arr[i]<<" ";
     }
+    cout<<endl;
+}
+
+void merge(vector<int>&arr, int low, int mid, int high){
+    vector<int>temp;
+    int left = low;
+    int right = mid + 1;
+
+    while(left <= mid && right <= high){
+        if(arr[left] <= arr[right]){
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else{
+            temp.push_back(arr[right]);
+            right++;
+        }
+    }
+    
+    while(left <= mid){
+        temp.push_back(arr[left]);
+        left++;
+    }
+
+    while(right <= high){
+        temp.push_back(arr[right]);
+        right++;
+    }
+
+    for(int i = low; i <= high; i++){
+        arr[i] = temp[i - low];
+    }
+}
+
+void mergeSort(vector<int>&arr, int low, int high){
+    if(low >= high) return;
+    int mid = (low + high) / 2;
+    mergeSort(arr, low, mid); // left wala part divide
+    mergeSort(arr, mid + 1, high); // right wala part divide
+    merge(arr, low, mid, high);
 }
 
 int main(){
     cout<<"The sorted Elements are :- "<<endl;
     vector<int>arr = {64, 25, 12, 22, 11, 10, 9, 23, 32};
+    vector<int> arr1 = arr;
     cout<<"Selection Sort Algorithm :- ";
-    Selectionsort(arr);
+    Selectionsort(arr1);
+    vector<int> arr2 = arr;
     cout<<"Bubble Sort Algorithm :- ";
-    bubbleSort(arr);
+    bubbleSort(arr2);
+    vector<int> arr3 = arr;
     cout<<"Insertion Sort Algorithm :- ";
-    insertionSort(arr);
+    insertionSort(arr3);
+    vector<int> arr4 = arr;
+    int n = arr4.size();
+    cout<<"Merge Sort Algorithm :- ";
+    mergeSort(arr4, 0, n - 1);
+    for(int i = 0; i < arr4.size(); i++){
+        cout<<arr4[i]<<" ";
+    }
+    cout<<endl;
     return 0;
 }
