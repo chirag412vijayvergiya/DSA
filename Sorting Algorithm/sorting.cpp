@@ -103,6 +103,35 @@ void mergeSort(vector<int>&arr, int low, int high){
     merge(arr, low, mid, high);
 }
 
+int partition(vector<int>&arr, int low, int high){
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
+
+    while(i < j){
+        while(arr[i] <= pivot && i <= high - 1){
+            i++;
+        }
+        while(arr[j] >= pivot &&  j >= low + 1){
+            j--;
+        }
+
+        if(i < j) swap(arr[i], arr[j]);
+    }
+
+    return j;
+}
+
+void QuickSort(vector<int>&arr, int low, int high){
+    if(low >= high) return;
+
+    int partitionIn = partition(arr, low, high);
+
+    QuickSort(arr, low, partitionIn - 1);
+
+    QuickSort(arr, partitionIn + 1, high);
+}
+
 int main(){
     cout<<"The sorted Elements are :- "<<endl;
     vector<int>arr = {64, 25, 12, 22, 11, 10, 9, 23, 32};
@@ -121,6 +150,14 @@ int main(){
     mergeSort(arr4, 0, n - 1);
     for(int i = 0; i < arr4.size(); i++){
         cout<<arr4[i]<<" ";
+    }
+    cout<<endl;
+    vector<int> arr5 = arr;
+    int m = arr5.size();
+    cout<<"Quick Sort Algorithm :- ";
+    mergeSort(arr5, 0, m - 1);
+    for(int i = 0; i < arr5.size(); i++){
+        cout<<arr5[i]<<" ";
     }
     cout<<endl;
     return 0;
