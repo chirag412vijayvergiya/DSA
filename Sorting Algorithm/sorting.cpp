@@ -132,6 +132,36 @@ void QuickSort(vector<int>&arr, int low, int high){
     QuickSort(arr, partitionIn + 1, high);
 }
 
+void bubbleSortRecursion(vector<int>&arr, int index){
+    if(index == 0) return;
+
+    for(int j = 0; j < index; j++){
+        if(arr[j] > arr[j+1]){
+            int temp = arr[j+1];
+            arr[j+1] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    bubbleSortRecursion(arr, index - 1);
+}
+
+void insertionSortRecursion(vector<int>&arr, int index, int size){
+    if(index == size) return;
+
+    for(int j = index; j > 0; j--){
+            if(arr[j] < arr[j-1]){
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+            }else{
+                break;
+        }
+    }
+
+    insertionSortRecursion(arr, index + 1, size);
+}
+
 int main(){
     cout<<"The sorted Elements are :- "<<endl;
     vector<int>arr = {64, 25, 12, 22, 11, 10, 9, 23, 32};
@@ -158,6 +188,22 @@ int main(){
     mergeSort(arr5, 0, m - 1);
     for(int i = 0; i < arr5.size(); i++){
         cout<<arr5[i]<<" ";
+    }
+    cout<<endl;
+    vector<int> arr6 = arr;
+    int o = arr6.size();
+    cout<<"Bubble Sort ( Recursion ) Algorithm :- ";
+    bubbleSortRecursion(arr6, o - 1);
+    for(int i = 0; i < arr6.size(); i++){
+        cout<<arr6[i]<<" ";
+    }
+    cout<<endl;
+    vector<int> arr7 = arr;
+    int p = arr7.size();
+    cout<<"Insertion Sort ( Recursion ) Algorithm :- ";
+    insertionSortRecursion(arr7, 1 , p);
+    for(int i = 0; i < arr7.size(); i++){
+        cout<<arr7[i]<<" ";
     }
     cout<<endl;
     return 0;
