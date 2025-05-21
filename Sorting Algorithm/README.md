@@ -6,6 +6,11 @@ This repository contains implementations of major sorting algorithms in a single
 
 - ✅ Selection Sort
 - ✅ Bubble Sort
+- ✅ Insertion Sort
+- ✅ Merge Sort
+- ✅ Quick Sort
+- ✅ Bubble Sort (Recursive)
+- ✅ Insertion Sort (Recursive)
 
 More algorithms (like Insertion Sort, Merge Sort, Quick Sort, Heap Sort, etc.) will be added soon.
 
