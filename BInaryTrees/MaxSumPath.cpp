@@ -48,7 +48,6 @@ int main(){
 
     Solution obj;
     int x =  obj.MaxSumPath(root);
-    // Same as height but here we need to find (leftsubtree + rightSubtree) length + 1 for diameter.
     cout<<"Max Sum Path of a Binary Tree :- "<<x<<endl;
 
     return 0;
